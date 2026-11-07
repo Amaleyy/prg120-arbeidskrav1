@@ -16,6 +16,7 @@ else
 {
     echo "Klassekode finnes fra før";
 }
+}
 ?>
 <html>
 <body>

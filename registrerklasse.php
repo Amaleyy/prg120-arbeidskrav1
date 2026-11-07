@@ -8,7 +8,13 @@ $studiumkode = $_POST["studiumkode"];
 
 $sqlSetning = "INSERT INTO klasse (klassekode, klassenavn, studiumkode)
 VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
-mysqli_query($db, $sqlSetning) or die("Ikke mulig å registrere klasse");
+if (mysqli_query($db, $sqlSetning))
+{
+    echo "Klasse er registrert";
+}
+else
+{
+    echo "Klassekode finnes fra før";
 }
 ?>
 <html>

@@ -23,6 +23,7 @@ else
         echo "Klasse er registrert";
     }
 }
+}
 ?>
 <html>
 <body>

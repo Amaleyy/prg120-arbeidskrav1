@@ -2,22 +2,18 @@
 include("db-tilkobling.php");
 if (isset($_POST["registrer"]))
 {
-    $klassekode = $_POST["klassekode"];
-    $klassenavn = $_POST["klassenavn"];
-    $studiumkode = $_POST["studiumkode"];
+$klassekode = $_POST["klassekode"];
+$klassenavn = $_POST["klassenavn"];
+$studiumkode = $_POST["studiumkode"];
 
-    $sqlSetning = "INSERT INTO klasse (klassekode, klassenavn, studiumkode)
-                   VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
-
-    mysqli_query($db, $sqlSetning) or die("Ikke mulig å registrere klasse");
+$sqlSetning = "INSERT INTO klasse (klassekode, klassenavn, studiumkode)
+VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
+mysqli_query($db, $sqlSetning) or die("Ikke mulig å registrere klasse");
 }
 ?>
-
 <html>
 <body>
-
 <h1>Registrer klasse</h1>
-
 <form method="post" action="registrerklasse.php">
 
 Klassekode:
@@ -33,8 +29,6 @@ Studiumkode:
 <br><br>
 
 <input type="submit" name="registrer" value="Registrer">
-
 </form>
-
 </body>
 </html>

@@ -6,16 +6,22 @@ $klassekode = $_POST["klassekode"];
 $klassenavn = $_POST["klassenavn"];
 $studiumkode = $_POST["studiumkode"];
 
-$sqlSetning = "INSERT INTO klasse (klassekode, klassenavn, studiumkode)
-VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
-if (mysqli_query($db, $sqlSetning))
+$sqlSjekk = "SELECT * FROM klasse WHERE klassekode='$klassekode'";
+$resultat = mysqli_query($db, $sqlSjekk);
+
+if (mysqli_num_rows($resultat) > 0)
 {
-    echo "Klasse er registrert";
+    echo "Klassekode er allerede registrert";
 }
 else
 {
-    echo "Klassekode finnes fra før";
-}
+    $sqlSetning = "INSERT INTO klasse (klassekode, klassenavn, studiumkode)
+    VALUES ('$klassekode', '$klassenavn', '$studiumkode')";
+
+    if (mysqli_query($db, $sqlSetning))
+    {
+        echo "Klasse er registrert";
+    }
 }
 ?>
 <html>

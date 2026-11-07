@@ -4,10 +4,20 @@ if (isset($_POST["slett"]))
 {
     $klassekode = $_POST["klassekode"];
 
-    $sqlSetning = "DELETE FROM klasse WHERE klassekode='$klassekode'";
-    mysqli_query($db, $sqlSetning) or die("Ikke mulig å slette klasse");
+    $sqlSetning = "SELECT * FROM student WHERE klassekode='$klassekode'";
+$sqlResultat = mysqli_query($db, $sqlSetning);
 
+if (mysqli_num_rows($sqlResultat) > 0)
+{
+    print "Klassen kan ikke slettes fordi det er registrert studenter i den.";
+}
+else
+{
+    $sqlSetning = "DELETE FROM klasse WHERE klassekode='$klassekode'";
+    mysqli_query($db, $sqlSetning);
+    
     print "Klasse er slettet";
+}
 }
 $sqlSetning = "SELECT * FROM klasse";
 $sqlResultat = mysqli_query($db, $sqlSetning);
